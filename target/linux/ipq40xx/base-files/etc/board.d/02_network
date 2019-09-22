@@ -40,11 +40,16 @@ ipq40xx_setup_interfaces()
 	compex,wpj428)
 		ucidef_set_interface_lan "eth0 eth1"
 		;;
-	qcom,cm520) |\
 	engenius,eap1300|\
 	meraki,mr33|\
 	netgear,ex6100v2|\
 	netgear,ex6150v2|\
+	qcom,cm520) |\
+	mobipromo,cm520-79f)
+		ucidef_set_interfaces_lan_wan "eth0" "eth1"
+		ucidef_add_switch "switch0" \
+			"0u@eth0" "3:lan:2" "4:lan:1"
+		;;
 	zyxel,wre6606)
 		ucidef_set_interface_lan "eth0"
 		;;
